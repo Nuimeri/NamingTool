@@ -32,5 +32,12 @@ function parseApiResponse(apiResponse) {
       // 2. 行頭の番号や記号、前後の空白を除去
       return line.replace(/^[\d.\s・*-]*/, '').trim();
     })
-    .filter(line => line.length > 0); // 3. 空行や整形後に空になった行を除外
+    .filter(line => {
+      if (line.length === 0) {
+        return false; // 空行を除外
+      }
+      // 「以上」「下記」「こちら」などで始まる行や、句点(。)で終わる文章は除外する
+      const isConcludingStatement = /^(以上|下記|こちら)/.test(line) || line.endsWith('。');
+      return !isConcludingStatement;
+    }); // 3. 空行や、ネーミング案以外の結びの文章を除外
 }
