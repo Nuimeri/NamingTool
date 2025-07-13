@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base target="_top">
+  <title>QUnit Test Runner</title>
+
+  <!-- Load QUnit CSS from local file -->
+  <style>
+    <?!= include('lib/qunit.css.html'); ?>
+  </style>
+</head>
+<body>
+  <div id="qunit"></div>
+  <div id="qunit-fixture"></div>
+
+  <!-- Load QUnit JS from local file -->
+  <script>
+    <?!= include('lib/qunit.js.html'); ?>
+  </script>
+
+  <!-- Load Source Files to be Tested -->
+  <!-- At this stage, these files are empty. The tests will fail because the functions are not defined, which is the expected behavior in TDD. -->
+  <script>
+    <?!= include('Utils.gs'); ?>
+    <?!= include('GeminiApi.gs'); ?>
+    <?!= include('NamingService.gs'); ?>
+  </script>
+
+  <!-- Load Test Files -->
+  <script>
+    <?!= include('tests/Utils_Test.gs'); ?>
+    <?!= include('tests/GeminiApi_Test.gs'); ?>
+    <?!= include('tests/NamingService_Test.gs'); ?>
+  </script>
+
+  <!-- Configure and run tests -->
+  <script>
+    QUnit.config.autostart = false;
+
+    // Run all defined test suites
+    Utils_Test();
+    NamingService_Test();
+    GeminiApi_Test();
+
+    QUnit.start();
+  </script>
+</body>
+</html>
