@@ -30,7 +30,7 @@ function parseApiResponse(apiResponse) {
     .split('\n') // 1. 行ごとに分割
     .map(line => {
       // 2. 行頭の番号や記号、前後の空白を除去
-      return line.replace(/^[\d.\s・-*]*/, '').trim();
+      return line.replace(/^[\d.\s・*-]*/, '').trim();
     })
     .filter(line => line.length > 0); // 3. 空行や整形後に空になった行を除外
 }
