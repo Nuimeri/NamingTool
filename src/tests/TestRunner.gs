@@ -7,7 +7,7 @@
  * Web App entry point. Serves the test runner HTML page.
  */
 function doGet(e) {
-  return HtmlService.createTemplateFromFile('tests/TestRunner.html')
+  return HtmlService.createTemplateFromFile('tests/TestRunnerPage.html')
     .evaluate()
     .setTitle('AI Naming Assistant Test Suite');
 }
@@ -16,5 +16,5 @@ function doGet(e) {
  * Includes the content of a server-side file into the HTML template.
  */
 function include(filename) {
-  return HtmlService.createHtmlOutputFromFile(filename).getContent();
+  return HtmlService.createTemplateFromFile(filename).getRawContent();
 }

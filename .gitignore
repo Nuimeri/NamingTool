@@ -1,0 +1,9 @@
+# GAS
+.clasp.json
+src/appsscript.json
+
+# dist
+dist/*
+
+# node
+node_modules/*
